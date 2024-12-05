@@ -9,7 +9,7 @@ import FeatureCard from "./components/FeatureCard";
 
 export default function LandingPage() {
   return (
-    <div className="min-h-screen bg-neutral-900 text-white">
+    <div className="min-h-screen">
       <main className="container mx-auto px-4">
         <Hero />
 

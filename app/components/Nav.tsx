@@ -7,9 +7,6 @@ const Nav = () => {
         <Link href="/" className="text-2xl font-bold">
           ReelDeal
         </Link>
-        <button className="px-4 py-2 border border-white rounded hover:bg-white hover:text-neutral-900 transition-colors duration-300">
-          Log In
-        </button>
       </nav>
     </header>
   );

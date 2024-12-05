@@ -83,7 +83,7 @@ export default function ProductPage() {
       transition={{ duration: 0.5 }}
       className="max-w-6xl mx-auto mt-3 px-4 sm:px-6 lg:px-8"
     >
-      <h1 className="text-3xl font-bold mb-8">Generate AI Content</h1>
+      <h1 className="text-3xl font-bold mb-8">Generate Content</h1>
       <form onSubmit={handleSubmit} className="space-y-6">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           <div>
@@ -100,7 +100,7 @@ export default function ProductPage() {
               value={formData.productName}
               onChange={handleInputChange}
               required
-              className="w-full px-3 py-2 bg-neutral-800 rounded-md focus:ring-2 focus:ring-indigo-500 focus:outline-none"
+              className="w-full px-3 py-2 border-2 border-blue-200 rounded-md focus:ring-2 focus:ring-indigo-500 focus:outline-none"
             />
           </div>
           <div>
@@ -116,7 +116,7 @@ export default function ProductPage() {
               value={formData.contentType}
               onChange={handleInputChange}
               required
-              className="w-full px-3 py-2 bg-neutral-800 rounded-md focus:ring-2 focus:ring-indigo-500 focus:outline-none"
+              className="w-full px-3 border-2 border-blue-200 py-2 rounded-md focus:ring-2 focus:ring-indigo-500 focus:outline-none"
             >
               <option value="caption">Caption</option>
               <option value="script">Script</option>
@@ -138,7 +138,7 @@ export default function ProductPage() {
               value={formData.platform}
               onChange={handleInputChange}
               required
-              className="w-full px-3 py-2 bg-neutral-800 rounded-md focus:ring-2 focus:ring-indigo-500 focus:outline-none"
+              className="w-full px-3 py-2 rounded-md border-2 border-blue-200 focus:ring-2 focus:ring-indigo-500 focus:outline-none"
             />
           </div>
           <div>
@@ -152,7 +152,7 @@ export default function ProductPage() {
               value={formData.tone}
               onChange={handleInputChange}
               required
-              className="w-full px-3 py-2 bg-neutral-800 rounded-md focus:ring-2 focus:ring-indigo-500 focus:outline-none"
+              className="w-full px-3 py-2 border-2 border-blue-200 rounded-md focus:ring-2 focus:ring-indigo-500 focus:outline-none"
             />
           </div>
           {formData.contentType === "caption" && (
@@ -169,7 +169,7 @@ export default function ProductPage() {
                 name="wordCount"
                 value={formData.wordCount}
                 onChange={handleInputChange}
-                className="w-full px-3 py-2 bg-neutral-800 rounded-md focus:ring-2 focus:ring-indigo-500 focus:outline-none"
+                className="w-full px-3 py-2 rounded-md border-2 border-blue-200  focus:ring-2 focus:ring-indigo-500 focus:outline-none"
               />
             </div>
           )}
@@ -188,7 +188,7 @@ export default function ProductPage() {
                   name="duration"
                   value={formData.duration}
                   onChange={handleInputChange}
-                  className="w-full px-3 py-2 bg-neutral-800 rounded-md focus:ring-2 focus:ring-indigo-500 focus:outline-none"
+                  className="w-full px-3 py-2 border-2 border-blue-200  rounded-md focus:ring-2 focus:ring-indigo-500 focus:outline-none"
                 />
               </div>
               <div>
@@ -204,7 +204,7 @@ export default function ProductPage() {
                   name="style"
                   value={formData.style}
                   onChange={handleInputChange}
-                  className="w-full px-3 py-2 bg-neutral-800 rounded-md focus:ring-2 focus:ring-indigo-500 focus:outline-none"
+                  className="w-full px-3 py-2 border-2 border-blue-200  rounded-md focus:ring-2 focus:ring-indigo-500 focus:outline-none"
                 />
               </div>
             </>
@@ -220,7 +220,7 @@ export default function ProductPage() {
                 name="style"
                 value={formData.style}
                 onChange={handleInputChange}
-                className="w-full px-3 py-2 bg-neutral-800 rounded-md focus:ring-2 focus:ring-indigo-500 focus:outline-none"
+                className="w-full px-3 py-2 border-2 border-blue-200  rounded-md focus:ring-2 focus:ring-indigo-500 focus:outline-none"
               />
             </div>
           )}
@@ -258,8 +258,8 @@ export default function ProductPage() {
           transition={{ duration: 0.5 }}
           className="mt-12"
         >
-          <div className="bg-neutral-800 rounded-lg p-6 shadow-lg">
-            <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-4 space-y-2 sm:space-y-0">
+          <div className="border-2 border-blue-200 rounded-lg p-6 shadow-lg">
+            <div className=" flex flex-col sm:flex-row justify-between items-start sm:items-center mb-4 space-y-2 sm:space-y-0">
               <h2 className="text-2xl font-bold">Generated Content</h2>
               <button
                 onClick={copyToClipboard}
@@ -269,7 +269,7 @@ export default function ProductPage() {
                 Copy
               </button>
             </div>
-            <div className="bg-neutral-700 p-4 rounded-md">
+            <div className="border-2 border-blue-300 p-4 rounded-md">
               <p className="whitespace-pre-wrap">{generatedContent}</p>
             </div>
           </div>

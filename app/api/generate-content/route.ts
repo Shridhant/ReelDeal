@@ -95,7 +95,7 @@ export async function POST(req: NextRequest) {
       prompt = `Role:
       You are a social media expert skilled in crafting engaging comments tailored to the platform and content type.
       Goals:
-      Write a thoughtful and engaging comment on the picture or video provided.
+      Write 3 thoughtful and engaging comment on the description provided.
       Describe the content based on the following description: ${productName}.
       Ensure the comment aligns with the tone of the content and platform (${platform}).
       The tone of the comment should be ${tone} (e.g., positive, funny, sarcastic, supportive).

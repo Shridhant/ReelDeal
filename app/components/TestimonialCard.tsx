@@ -8,7 +8,7 @@ interface TestimonialCardProps {
 function TestimonialCard({ quote, author }: TestimonialCardProps) {
   return (
     <motion.div
-      className="bg-neutral-800 rounded-lg p-6"
+      className="border-2 border-blue-400 rounded-lg p-6"
       whileHover={{ scale: 1.05 }}
       transition={{ duration: 0.3 }}
     >

@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import Link from "next/link";
+import HeroButton from "./HeroButton";
 
 const Hero = () => {
   return (
@@ -23,15 +24,7 @@ const Hero = () => {
           Revolutionize your content strategy with our AI-powered platform
         </motion.p>
         <Link href="/home">
-          <motion.button
-            className="bg-indigo-500 text-white px-8 py-3 rounded-full text-lg font-semibold hover:bg-indigo-600 transition-colors duration-300 flex items-center mx-auto"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.4 }}
-            whileHover={{ scale: 1.05 }}
-          >
-            Get Started Free <ArrowRight className="ml-2" />
-          </motion.button>
+          <HeroButton />
         </Link>
       </div>
     </section>
