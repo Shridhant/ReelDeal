@@ -12,9 +12,10 @@ function TestimonialCard({ quote, author }: TestimonialCardProps) {
       whileHover={{ scale: 1.05 }}
       transition={{ duration: 0.3 }}
     >
-      <p className="mb-4 italic">"{quote}"</p>
+      <p className="mb-4 italic">&quot;{quote}&quot;</p>
       <p className="text-neutral-400 font-semibold">- {author}</p>
     </motion.div>
   );
 }
+
 export default TestimonialCard;

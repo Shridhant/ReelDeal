@@ -6,7 +6,7 @@ dotenv.config();
 
 interface ContentGenerationRequest {
   productName: string;
-  contentType: "caption" | "script" | "comment"; // Added "comment" to the type
+  contentType: "caption" | "script" | "comment";
   platform: string;
   tone: string;
   wordCount?: number;
@@ -20,7 +20,6 @@ export function GET() {
   });
 }
 
-// Handle the POST request
 export async function POST(req: NextRequest) {
   try {
     // Ensure the API key is set
@@ -64,7 +63,7 @@ export async function POST(req: NextRequest) {
 
     // Select the model
     const model = await genAI.getGenerativeModel({
-      model: "gemini-1.5-flash", // You can add a fallback or allow dynamic selection
+      model: "gemini-1.5-flash",
     });
 
     // Construct the prompt based on content type
@@ -72,9 +71,7 @@ export async function POST(req: NextRequest) {
     if (contentType === "caption") {
       prompt = `Role:
       You are a creative and experienced social media strategist specializing in crafting engaging and platform-specific captions that resonate with the target audience.
-      
       Goals:
-      
       Create captivating captions tailored for the specific platform (${platform}).
       Highlight the product, service, or theme (${productName}) in a way that aligns with the brand's voice and goals.
       Ensure the tone matches the intended mood (${tone}), whether professional, witty, casual, or inspirational.
@@ -84,9 +81,7 @@ export async function POST(req: NextRequest) {
     } else if (contentType === "script") {
       prompt = `Role:
       You are a creative video scriptwriter skilled in crafting engaging, platform-optimized scripts that effectively highlight product features and captivate the target audience.
-      
       Goals:
-      
       Write a concise, platform-specific (${platform}) video script.
       Showcase the product (${productName}) by describing its features, benefits, and unique selling points.
       Use a ${tone} tone to connect with the audience while maintaining the platform's style.
@@ -99,15 +94,12 @@ export async function POST(req: NextRequest) {
     } else if (contentType === "comment") {
       prompt = `Role:
       You are a social media expert skilled in crafting engaging comments tailored to the platform and content type.
-      
       Goals:
-      
       Write a thoughtful and engaging comment on the picture or video provided.
       Describe the content based on the following description: ${productName}.
       Ensure the comment aligns with the tone of the content and platform (${platform}).
       The tone of the comment should be ${tone} (e.g., positive, funny, sarcastic, supportive).
       Make sure the comment is appropriate for the content type (image or video) and resonates with the target audience.
-      
       Content description: ${productName} (This could be the description of the image or video).
       Type of comment: ${
         style || "engaging"
@@ -121,19 +113,23 @@ export async function POST(req: NextRequest) {
 
     // Generate content using the model
     const result = await model.generateContent(prompt);
-    const generatedContent = result.response.text();
+    if (!result.response) {
+      throw new Error("Model did not return a valid response.");
+    }
+
+    const generatedContent = await result.response.text();
 
     // Respond with the generated content
     return NextResponse.json({
       content: generatedContent,
     });
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error("Error in content generation:", error);
 
     return NextResponse.json(
       {
         error: "Internal Server Error: Unable to generate content.",
-        details: error.message,
+        details: error instanceof Error ? error.message : String(error),
       },
       { status: 500 }
     );

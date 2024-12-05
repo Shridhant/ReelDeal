@@ -1,11 +1,5 @@
 "use client";
-import {
-  ArrowRight,
-  CheckCircle,
-  Instagram,
-  Youtube,
-  BookOpen,
-} from "lucide-react";
+import { Instagram, Youtube, BookOpen } from "lucide-react";
 
 import Hero from "./components/Hero";
 

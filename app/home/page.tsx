@@ -70,8 +70,8 @@ export default function ProductPage() {
       .then(() => {
         alert("Content copied to clipboard!");
       })
-      .catch((err) => {
-        console.error("Failed to copy text: ", err);
+      .catch(() => {
+        console.error("Failed to copy text: ");
       });
   };
 
