@@ -58,6 +58,7 @@ export default function ProductPage() {
       const data = await response.json();
       setGeneratedContent(data.content);
     } catch (err) {
+      console.error(err); // Log the error for debugging
       setError("An error occurred while generating content. Please try again.");
     } finally {
       setIsLoading(false);
