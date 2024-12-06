@@ -10,7 +10,7 @@ function FeatureCard({ icon, title, description }: FeatureCardProps) {
   return (
     <div className="rounded-lg p-6 border-2 border-blue-400 ">
       <div className="flex items-center justify-center mb-4">{icon}</div>
-      <h3 className="text-xl font-semibold mb-2">{title}</h3>
+      <h3 className="text-xl text-center font-semibold mb-2">{title}</h3>
       <p className="text-neutral-400">{description}</p>
     </div>
   );
