@@ -10,7 +10,7 @@ const Footer = () => {
               Connect With Me!
             </h2>
             <p className="text-gray-600">
-              I am not that good of a coder. But i try. Dm me for any feedbacks.
+              I try. Dm me for any feedbacks.
               Thank you! All Love, <br />
               Shridhant
             </p>
