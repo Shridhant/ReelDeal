@@ -44,7 +44,7 @@ export default function LandingPage() {
           </h2>
           <div className="grid md:grid-cols-2 gap-8">
             <TestimonialCard
-              quote="ContentAI has transformed our content creation process. We're now producing high-quality content in half the time!"
+              quote="ReelDeal has transformed our content creation process. We're now producing high-quality content in half the time!"
               author="Sarah J., Marketing Manager"
             />
             <TestimonialCard
