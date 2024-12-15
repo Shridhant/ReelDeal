@@ -111,18 +111,34 @@ export async function POST(req: NextRequest) {
         style || "engaging"
       } (e.g., witty, motivational, casual, or formal).`;
     } else if (contentType === "reply") {
-      prompt = `Role:
-      You are a thoughtful and empathetic communicator, specializing in crafting personalized and meaningful message replies.
-      Goals:
-      Craft 3 reply suggestions tailored to the message received and relationship type (${relationship}).
-      Message received: "${userMessage}".
-      Ensure the tone of the reply aligns with the intended mood (${tone}), whether supportive, humorous, professional, or casual.
-      Include the style (${
-        style || "engaging and friendly"
-      }) to resonate with the sender.
-      Make sure the reply is concise and fits within (${
-        wordCount || 50
-      }). for the given relationship.`;
+      // Construct the prompt based on the presence of a broken message
+      if (brokenMessage) {
+        prompt = `Role:
+          You are a thoughtful and empathetic communicator, specializing in crafting personalized and meaningful messages.
+          Goals:
+          1. Refine and retune the provided broken message: "${brokenMessage}".
+             - Ensure the message is clear, coherent, and aligns with the intended tone (${tone}).
+             - Adapt the style (${
+               style || "engaging and friendly"
+             }) to match the relationship type (${relationship}).
+          2. Based on the refined message, craft 3 personalized reply suggestions tailored to the relationship type.
+             - Each reply should resonate with the sender and fit within ${
+               wordCount || 50
+             } words.`;
+      } else {
+        prompt = `Role:
+          You are a thoughtful and empathetic communicator, specializing in crafting personalized and meaningful message replies.
+          Goals:
+          Craft 3 reply suggestions tailored to the message received and relationship type (${relationship}).
+          Message received: "${userMessage}".
+          - Ensure the tone of the reply aligns with the intended mood (${tone}), whether supportive, humorous, professional, or casual.
+          - Include the style (${
+            style || "engaging and friendly"
+          }) to resonate with the sender.
+          - Make sure the reply is concise and fits within ${
+            wordCount || 50
+          } words for the given relationship.`;
+      }
     } else {
       return NextResponse.json(
         { error: "Invalid content type specified." },

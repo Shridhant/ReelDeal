@@ -15,6 +15,7 @@ interface ContentGenerationRequest {
   duration?: number;
   style?: string;
   userMessage?: string;
+  brokenMessage?: string;
 }
 
 export default function ProductPage() {
@@ -28,6 +29,7 @@ export default function ProductPage() {
     style: "",
     userMessage: "",
     relationship: "",
+    brokenMessage: "",
   });
   const [generatedContent, setGeneratedContent] = useState<string>("");
   const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -48,7 +50,7 @@ export default function ProductPage() {
     setError(null);
 
     try {
-      const response = await fetch("/api/generate-content", {
+      const response = await fetch("/api/try", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -396,6 +398,24 @@ export default function ProductPage() {
                   className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:outline-none"
                 />
               </div>
+
+              <div>
+                <label
+                  htmlFor="brokenMessage"
+                  className="block text-sm font-medium text-gray-700 mb-2"
+                >
+                  Unclear Message (Optional)
+                </label>
+                <textarea
+                  id="brokenMessage"
+                  name="brokenMessage"
+                  value={formData.brokenMessage}
+                  onChange={handleInputChange}
+                  placeholder="Add a message you want to clarify or improve"
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:outline-none"
+                />
+              </div>
+
               <div>
                 <label
                   htmlFor="style"
